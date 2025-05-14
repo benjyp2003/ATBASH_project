@@ -13,7 +13,7 @@ namespace ATBASH_project
         
         }
 
-        static int DangerPoints(string decrypted)
+        static string DangerPoints(string decrypted)
         {
             int points = 0;
             string[] arrayDecrypted = decrypted.Split(' ');
@@ -22,7 +22,8 @@ namespace ATBASH_project
                 if (word == bomb || word == nukhba || word == fighter || word == rocket || word == secret )
                     points++;
             }
-            return points;
+            string strPoints = Convert.ToString(points);
+            return strPoints, decrypted;
 
         }
 
