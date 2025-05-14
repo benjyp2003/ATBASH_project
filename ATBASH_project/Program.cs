@@ -13,7 +13,7 @@ internal class Program
         Console.WriteLine(DangerPoints("bomb"));
     }
 
-    static string DangerPoints(string decrypted)
+    static List<string> DangerPoints(string decrypted)
     {
         int points = 0;
         string[] arrayDecrypted = decrypted.Split(' ');
@@ -22,8 +22,10 @@ internal class Program
             if (word == "bomb" || word == "nukhba" || word == "fighter" || word == "rocket" || word == "secret")
             { points++; }
         }
+        
         string strPoints = Convert.ToString(points);
-        return strPoints, decrypted;
+        string[] alertPoints = {decrypted, strPoints}
+        return alertPoints;
 
     }
 
