@@ -10,6 +10,23 @@ namespace ATBASH_project
     {
         static void Main(string[] args)
         {
+        
         }
+
+        static int DangerPoints(string decrypted)
+        {
+            int points = 0;
+            string[] arrayDecrypted = decrypted.Split(' ');
+            foreach (string word in arrayDecrypted)
+            { 
+                if (word == bomb || word == nukhba || word == fighter || word == rocket || word == secret )
+                    points++;
+            }
+            return points;
+
+        }
+
+
+
     }
 }
