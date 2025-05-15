@@ -13,7 +13,8 @@ namespace ATBASH_project
     {
         static void Main(string[] args)
         {
-            DangerPoints( Decryption("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb."));
+            string[] msgAndPoints = DangerPoints( Decryption("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb."));
+            PrintMessage(msgAndPoints);
         }
 
 
@@ -31,8 +32,14 @@ namespace ATBASH_project
                 {
                     decrypted += (char)('a' + (char)('z' - letter));
                 }
+                else if ((letter == '\n'))
+                {
+                    decrypted += '\n' + " ";
+                }
                 else
                 { decrypted += letter; }
+
+
             }
             return decrypted;
 
@@ -56,6 +63,26 @@ namespace ATBASH_project
             string[] final = { strPoints, decrypted };
             return final;
 
+        }
+
+        static void PrintMessage(string[] msgAndPoints)
+        {
+            if (Convert.ToInt32(msgAndPoints[0]) > 0 && Convert.ToInt32(msgAndPoints[0]) < 6)
+            {
+                Console.WriteLine($"WARNING! \n{msgAndPoints[1]} \ntotal warning points: {msgAndPoints[0]}");
+            }
+            else if (Convert.ToInt32(msgAndPoints[0]) > 5 && Convert.ToInt32(msgAndPoints[0]) < 11)
+            {
+                Console.WriteLine($"DANGER! \n{msgAndPoints[1]} \ntotal warning points: {msgAndPoints[0]}");
+            }
+            else if (Convert.ToInt32(msgAndPoints[0]) > 10)
+            {
+                Console.WriteLine($"ULTRA ALERT! \n{msgAndPoints[1]} \ntotal warning points: {msgAndPoints[0]}");
+            }
+            else
+            {
+                Console.WriteLine($"{msgAndPoints[1]} \ntotal warning points: {msgAndPoints[0]}");
+            }
         }
 
 
