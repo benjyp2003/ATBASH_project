@@ -33,6 +33,24 @@ namespace ATBASH_project
             }
 
             return decrypted;
+
         }
+
+        static string DangerPoints(string decrypted)
+        {
+            int points = 0;
+            string[] arrayDecrypted = decrypted.Split(' ');
+            foreach (string word in arrayDecrypted)
+            { 
+                if (word == bomb || word == nukhba || word == fighter || word == rocket || word == secret )
+                    points++;
+            }
+            string strPoints = Convert.ToString(points);
+            return strPoints, decrypted;
+
+        }
+
+
+
     }
 }
